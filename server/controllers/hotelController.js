@@ -13,7 +13,7 @@ export const registerHotel = async (req, res) => {
         }
         await Hotel.create({name, address, contact, city, owner});
 
-        await Hotel.create({name, address, contact, city, owner});
+        //await Hotel.create({name, address, contact, city, owner});
         
         await User.findByIdAndUpdate(owner, {role: "hotelOwner"});
         

@@ -7,7 +7,11 @@ import Room from "../models/Room.js";
 export const createRoom = async (req, res) => {
     try{
         const {roomType, pricePerNight, amenities} = req.body;
-        const hotel = await Hotel.findOne({owner: req.auth.userId});
+        //const hotel = await Hotel.findOne({owner: req.auth.userId});
+
+        const { userId } = req.auth();
+        const hotel = await Hotel.findOne({owner: userId});
+
 
         if(!hotel){ 
             return res.json({ success: false, message: "Hotel not found" })
@@ -29,8 +33,8 @@ export const createRoom = async (req, res) => {
         })
         res.json({success: true, message: "Room created successfully"})
     }
-    catch(err){
-        res.json({success: false, message: console.error.message});
+    catch(error){
+        res.json({success: false, message: error.message});
         
     }
 }

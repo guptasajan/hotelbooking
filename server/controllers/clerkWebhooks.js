@@ -17,12 +17,22 @@ const clerkWebhooks = async(req, res)=>{
         await whook.verify(JSON.stringify(req.body), headers)
 
         //Getting Data from request body
-        const {data, type} = req.body
+        // const {data, type} = req.body
+
+        // const userData = {
+        //     _id: data.id,
+        //     email: data.email_addresses[0].email_adresses,
+        //     username: data.first_name+ " " + data.last_name,
+        //     image: data.image_url,
+        // }
+// Getting Data from request body
+        const { data, type } = req.body;
 
         const userData = {
             _id: data.id,
-            email: data.email_adresses[0].email_adresses,
-            username: data.first_name+ " " + data.last_name,
+            // Yahan spelling theek ki gayi hai (adresses -> addresses, and last mein email_address)
+            email: data.email_addresses[0].email_address, 
+            username: data.first_name + " " + data.last_name,
             image: data.image_url,
         }
 
