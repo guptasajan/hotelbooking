@@ -5,7 +5,10 @@ import { roomsDummyData } from '../../assets/assets'
 
 const ListRoom = () => {
 
-  const [rooms, setRooms] = useState(roomsDummyData)
+    const [rooms, setRooms] = useState(roomsDummyData)
+    const {axios, getToken, user} = useAppContext()
+  
+  
   return (
     <div>
       <Title align='left' font='outfit' title='Room Listings' subTitle='View, edits, or manage all listed rooms. Keep the information up-to-date to provide the best experience for users.'/>
