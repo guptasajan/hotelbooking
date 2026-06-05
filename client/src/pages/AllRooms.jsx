@@ -336,7 +336,7 @@ const AllRooms = () => {
 
                     <div className='px-5 pt-8'>
                         <p className='font-semibold text-gray-800 pb-2 border-b mb-3'>Price Range</p>
-                        {PriceRanges.map((range, index) => <CheckBox key={index} label={`$${currency} ${range}`} selected={selectedFilters.PriceRanges.includes(range)} onChange={(checked) => handleFilterChange(checked, range, 'priceRange')} />)}
+                        {PriceRanges.map((range, index) => <CheckBox key={index} label={`${currency} ${range}`} selected={selectedFilters.PriceRanges.includes(range)} onChange={(checked) => handleFilterChange(checked, range, 'priceRange')} />)}
                     </div>
 
                     <div className='px-5 pt-8'>
