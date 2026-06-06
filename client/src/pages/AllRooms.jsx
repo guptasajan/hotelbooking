@@ -141,7 +141,7 @@
 
 // //2:29:21
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { facilityIcons, roomsDummyData } from "../assets/assets";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import StarRating from "../components/StarRating";
@@ -384,13 +384,14 @@ const AllRooms = () => {
             <p className="font-semibold text-gray-800 pb-2 border-b mb-3">
               Popular filters
             </p>
+
             {roomTypes.map((type, index) => (
               <CheckBox
                 key={index}
-                label={room}
-                selected={selectedFilters.roomTypes.includes(room)}
+                label={type}
+                selected={selectedFilters.roomTypes.includes(type)}
                 onChange={(checked) =>
-                  handleFilterChange(checked, room, "roomType")
+                  handleFilterChange(checked, type, "roomTypes")
                 }
               />
             ))}
