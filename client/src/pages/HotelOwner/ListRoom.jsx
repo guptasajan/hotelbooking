@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Title from '../../components/Title'
 import { roomsDummyData } from '../../assets/assets'
+import { useAppContext } from '../../conext/AppContext';
 
 
 const ListRoom = () => {
 
   const [rooms, setRooms] = useState(roomsDummyData)
-  const { axios, getToken, user, currency } = useAppContext()
+  //const { axios, getToken, user, currency } = useAppContext()
+  const { axios, getToken, user, currency, toast } = useAppContext()
+
 
   const fetchRooms = async () => {
     try {
@@ -23,7 +26,7 @@ const ListRoom = () => {
     }
   }
   const toggleAvailability = async (roomId) => {
-    const { data } = await axios.post('/api/rooms/toggle-availability', { roomId }, { header: { Authorization: `Bearer ${await getToken()}` } })
+    const { data } = await axios.post('/api/rooms/toggle-availability', { roomId }, { headers: { Authorization: `Bearer ${await getToken()}` } })
     if (data.success) {
       toast.success(data.message)
       fetchRooms()

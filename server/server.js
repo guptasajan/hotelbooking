@@ -28,15 +28,15 @@ app.use(clerkMiddleware())
 //API to listen to Clerk Webhooks
 app.use("/api/clerk", clerkWebhooks)
 
-app.get('/', (req, res)=> res.send("API is working fine"))
+app.get('/', (req, res) => res.send("API is working fine"))
 app.use('/api/user', userRouter)
 app.use('/api/hotels', hotelRouter)
 app.use('/api/rooms', roomRouter)
 app.use('/api/bookings', bookingRouter)
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, ()=> console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 
 //5:13;18

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Title from '../../components/Title'
 import { assets } from '../../assets/assets'
 import { useEffect } from 'react';
+import { useAppContext } from '../../conext/AppContext';
 
 const Dashboard = () => {
 

@@ -62,10 +62,26 @@ export const AppProvider = ({ children }) => {
     }, [])
 
 
+    // const value = {
+    //     currency, navigate, user, getToken, isOwner, setIsOwner, axios, showHotelReg,
+    //     setShowHotelReg, searchedCities, setSearchedCities,
+    //     rooms, setRooms
+    // }
     const value = {
-        currency, navigate, user, getToken, isOwner, setIsOwner, axios, showHotelReg,
-        setShowHotelReg, setShowHotelReg, searchedCities, setSearchedCities,
-        rooms, setRooms
+        currency,
+        navigate,
+        user,
+        getToken,
+        isOwner,
+        setIsOwner,
+        axios,
+        toast,
+        showHotelReg,
+        setShowHotelReg,
+        searchedCities,
+        setSearchedCities,
+        rooms,
+        setRooms
     }
 
     return (
