@@ -6,15 +6,38 @@ const clerkWebhooks = async(req, res)=>{
         //Create a Svix with clerk webhook secret.
         const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET)
 
-        //Getting Headers
+// Getting Headers
         const headers = {
             "svix-id": req.headers["svix-id"],
-            "svix-timestamp": req.headers["timestamp-id"],
+            // Yahan "timestamp-id" ki jagah "svix-timestamp" aayega
+            "svix-timestamp": req.headers["svix-timestamp"], 
             "svix-signature": req.headers["svix-signature"],
         };
 
-        //verify Headers
+        // verify Headers
         await whook.verify(JSON.stringify(req.body), headers)
+
+        // Getting Data from request body
+        const {data, type} = req.body
+
+        const userData = {
+            _id: data.id,
+            // Yahan spelling theek ki gayi hai (addresses aur email_address)
+            email: data.email_addresses[0].email_address, 
+            username: data.first_name + " " + data.last_name,
+            image: data.image_url,
+        }
+
+
+        //Getting Headers
+        // const headers = {
+        //     "svix-id": req.headers["svix-id"],
+        //     "svix-timestamp": req.headers["timestamp-id"],
+        //     "svix-signature": req.headers["svix-signature"],
+        // };
+
+        // //verify Headers
+        // await whook.verify(JSON.stringify(req.body), headers)
 
         //Getting Data from request body
         // const {data, type} = req.body
@@ -25,16 +48,8 @@ const clerkWebhooks = async(req, res)=>{
         //     username: data.first_name+ " " + data.last_name,
         //     image: data.image_url,
         // }
-// Getting Data from request body
-        const { data, type } = req.body;
 
-        const userData = {
-            _id: data.id,
-            // Yahan spelling theek ki gayi hai (adresses -> addresses, and last mein email_address)
-            email: data.email_addresses[0].email_address, 
-            username: data.first_name + " " + data.last_name,
-            image: data.image_url,
-        }
+        
 
         //Switch Cases for different Events
         switch (type) {
