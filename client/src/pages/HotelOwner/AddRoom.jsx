@@ -13,6 +13,7 @@ const AddRoom = () => {
     2: null,
     3: null,
     4: null,
+  });
 
   })
 
@@ -44,8 +45,10 @@ const AddRoom = () => {
       formData.append('roomType', inputs.roomType)
       formData.append('pricePerNight', inputs.pricePerNight)
       //converting amenities to Array & keeping only enabled amenities
-      const amenities = Object.keys(inputs.amenities).filter(key => inputs.amenities[key])
-      formData.append('amenities', JSON.stringify(amenities))
+      const amenities = Object.keys(inputs.amenities).filter(
+        (key) => inputs.amenities[key],
+      );
+      formData.append("amenities", JSON.stringify(amenities));
 
       //adding images to formaData
       Object.keys(images).forEach((key) => {
@@ -57,7 +60,7 @@ const AddRoom = () => {
       if (data.success) {
         toast.success(data.message)
         setInputs({
-          roomType: '',
+          roomType: "",
           amenities: {
             'Free WiFi': false,
             'Free Breakfast': false,
@@ -78,7 +81,7 @@ const AddRoom = () => {
     finally {
       setLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={onSubmitHandler}>
@@ -108,8 +111,8 @@ const AddRoom = () => {
         </div>
 
         <div>
-          <p className='mt-4 text-gray-800'>
-            Price <span className='text-xs'>/night</span>
+          <p className="mt-4 text-gray-800">
+            Price <span className="text-xs">/night</span>
           </p>
           <input type="number" placeholder='0' className='border border-gray-300 mt-1 rounded p-2 w-24' value={inputs.pricePerNight} onChange={e => setInputs({ ...inputs, pricePerNight: e.target.value })} />
         </div>
@@ -126,14 +129,16 @@ const AddRoom = () => {
         ))}
       </div>
 
-      <button className='bg-primary text-white px-8 py-2 rounded mt-8 cursor-pointer' disabled={loading}>
-        {loading ? 'Adding...' : "Add Room"}
+      <button
+        className="bg-primary text-white px-8 py-2 rounded mt-8 cursor-pointer"
+        disabled={loading}
+      >
+        {loading ? "Adding..." : "Add Room"}
       </button>
-
     </form>
-  )
-}
+  );
+};
 
-export default AddRoom
+export default AddRoom;
 
 //8:14:10
